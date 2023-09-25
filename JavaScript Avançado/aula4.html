@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aula - 21/09</title>
+  </head>
+  <body style="font-family: sans-serif; background-color: #1f2029; color: #fff">
+    <p id="p_praia1" name="nome_praia1" class="praia1" class="oculto">Poá</p>
+    <p id="p_praia2" name="nome_praia2" class="praia2" class="praia1">Bombinhas</p>
+    <p id="p_praia3" name="nome_praia3" class="praia3" class="praia2">Taquaras</p>
+
+    <script>
+      
+      var paragrafo = document.getElementsByTagName('p');
+ 
+      for (let qtdParagrafos = 0; qtdParagrafos < paragrafo.length; qtdParagrafos++) {
+         document.write(paragrafo[qtdParagrafos].innerHTML + "" + "<br>");
+      }
+      var elemento = document.getElementsByName("nome_praia2");
+      console.log(elemento);
+ 
+      function mudarConteudo(){
+        document.getElementById("p_praia3").innerHTML = "Arvoredo"
+      }
+ 
+      function localizarPraia(){
+        var elementos = document.getElementsByName("p_praia3");
+        console.log(elementos);
+      }
+ 
+      mudarConteudo();
+      localizarPraia();
+
+      </script>
+    <hr>
+
+    <!--------------------------------------Evento 1---------------------------------------------->
+    <button onclick="saudacao()">Clique Aqui</button>
+    
+    <button id="soma">10 + 5</button>
+    
+    <script>
+      function saudacao(){
+      alert("Bom Dia");
+     }
+
+     function somaValores(valor1,valor2){
+      let soma = valor1 + valor2;
+      alert(soma);
+    }
+
+
+     window.onload = function(){
+      let botaoSomar = document.getElementById("soma");
+      botaoSomar.onclick = function(){
+        somaValores(10,5);
+      };
+     }
+
+    </script>   
+    <hr>
+
+    <!--------------------------------------Evento 3---------------------------------------------->
+    <form>
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" onblur="validarNome()">
+      <p id="mensagem">Esperando Digitar Nome</p>
+    </form>
+
+    <script>
+      function validarNome(){
+      var nomeInput = document.getElementById("nome");
+      var mensagem1 = document.getElementById("mensagem");
+
+      if(nomeInput.value === ""){
+        mensagem1.textContent = "Por Favor preencha o campo Nome"
+      } else {
+        mensagem1.textContent = ""
+      }
+    }
+    </script>
+    <hr>
+    <!--------------------------------------Evento 4---------------------------------------------->
+
+    <form action="">
+      <label for="fruta">Escolha uma Fruta:</label>
+      <select id="fruta" onchange="mostrarSelecao()">
+        <option value="maca">Maça</option>
+        <option value="banana">Banana</option>
+        <option value="laranja">Laranja</option>
+    </select>
+    </form>
+
+    <p id="mensagem"></p>
+
+    <script>
+      function mostrarSelecao(){
+      var frutaSelecionada = document.getElementById("fruta").value;
+      var mensagem = document.getElementById("mensagem");
+
+      mensagem.textContent = "Você escolheu: " + frutaSelecionada;
+    }
+      </script>
+    <hr>
+  </body>
+</html>
