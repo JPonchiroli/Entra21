@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins";
+  scroll-behavior: smooth;
+}
+
+
+h1 {
+  margin-bottom: 15px;
+}
+
+
+nav a{
+    color: white;
+    text-decoration: none;
+}
+
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+form{
+    border: solid 1px white;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    height: 500px;
+    box-shadow: 1px 1px 50px;
+}
+
+input {
+  border: none;
+  background: transparent;
+  color: white;
+  border-bottom: solid 2px white;
+  border-radius: 2px;
+  font-size: 15px;
+  text-align: center;
+}
+
+input + label {
+  position: relative;
+  top: -30px; /* Posição inicial, ajuste conforme necessário */
+  left: 0px;
+  transition: top 0.3s, font-size 0.3s;
+}
+
+input:focus {
+  outline: none;
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label {
+  top: -50px;
+  font-size: 15px; 
+}
+
+label {
+  position: relative;
+  top: 0;
+  left: 0;
+  transition: top 0.3s;
+  pointer-events: none;
+  display: flex;
+  justify-content: flex-start;
+}
+
+form button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border: solid 1px white;
+  border-radius: 10px;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  width: 100px;
+}
+
+form button:hover{
+    cursor: pointer;
+}
+
+form button:active{
+    transform: scale(0.9);
+}

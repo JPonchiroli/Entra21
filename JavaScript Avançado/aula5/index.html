@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Controle de Estacionamento 28/09</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body style="font-family: sans-serif; background-color: #1f2029; color: #fff">
+    <header>
+      <h1>Cadastramento de Vagas</h1>
+      <nav>
+        <ul>
+          <li><a href="#cadastrarVeiculos">Cadastrar Vaga</a></li>
+          <li><a href="#listarVagas">Consultar Vagas</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="container">
+        <h1 id="cadastrarVeiculos">Cadastro Vaga</h1>
+        <form action="get" id="cadastro-form">
+          <input type="text" id="placa" placeholder=" " required="true"  maxlength="9" />
+          <label for="placa">Placa</label>
+          <br />
+          <input type="text" id="proprietario" placeholder=" " required="true"/>
+          <label for="proprietario">Proprietário</label>
+          <br />
+          <input type="text" id="apartamento" placeholder=" " required="true" />
+          <label for="apartamento">Apartamento</label>
+          <br />
+          <input type="text" id="bloco" placeholder=" " required="true" />
+          <label for="bloco">Bloco</label>
+          <br />
+          <input type="text" id="modelo" placeholder=" " required="true" />
+          <label for="modelo">Modelo</label>
+          <br />
+          <input type="text" id="cor" placeholder=" " required="true" />
+          <label for="cor">Cor</label>
+          <input type="text" id="vaga" placeholder=" " required="true" />
+          <label for="vaga">Vaga</label>
+          <br />
+          <button id="salvar" type="submit">Enviar</button>
+        </form>
+      </div>
+    </main>
+    <section>
+      <h1 id="listarVagas">Listar Vagas</h1>
+      <ul id="vagas-list"></ul>
+    </section>
+    <script src="index.js"></script>
+  </body>
+</html>
