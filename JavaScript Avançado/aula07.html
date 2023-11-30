@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 10/10</title>
+</head>
+<body style="font-family: sans-serif; background-color: #1f2029; color: #fff"> 
+    <h1>Orientação a Objeto - Criando Classe</h1>
+    
+    <ul>
+        <h2>Cliente</h2>
+        <li id="nomeCliente"></li>
+        <li id="emailCliente"></li>
+        <li id="foneCliente"></li>
+    </ul>
+    <script>
+
+        class Cliente{
+        constructor (nomeCliente, emailCliente, foneCliente){
+                this.nomeCliente = nomeCliente;
+                this.emailCliente = emailCliente;
+                this.foneCliente = foneCliente;
+            }
+        }
+
+        const cliente1 = new Cliente("João Francisco de Souza", "fsouza@gmail.com", "(47)99658-4628");
+
+        document.getElementById("nomeCliente").textContent = cliente1.nomeCliente;
+        document.getElementById("emailCliente").textContent = cliente1.emailCliente;
+        document.getElementById("foneCliente").textContent = cliente1.foneCliente;
+    </script>
+
+    <hr>
+
+    <h1>Orientação a Objeto - Atributos Privados</h1>
+    <ul>
+        <h2>Pessoa</h2>
+        <li id="nomePessoa1"></li>
+        <li>Undefined</li>
+    </ul>
+    <script>
+        class Pessoa {
+            constructor(nome){
+                var nomePrivado = nome;
+
+                this.getNome = function (){
+                    return nomePrivado;
+                };
+            }
+        }
+
+        var pessoa = new Pessoa('João');
+        document.getElementById("nomePessoa1").textContent = pessoa.getNome();
+        document.getElementById("nomePessoa2").textContent = (pessoa.nomePrivado); // retorna Undefined
+    </script>
+
+    <hr>
+
+    <h1>Orientação a Objeto - Atributos Privados PT.2</h1>
+    <ul>
+        <h2>Conta Bancária - <span id="saldoInicial"></span></h2>
+        <li>Deposito de 500</li>
+        <li>Saque de 200</li>
+        <h2>Conta Bancária - <span id="saldoFinal"></span></h2>
+    </ul>
+
+    <script>
+        class ContaBancaria{
+            constructor(saldoInicial){
+                var saldo = saldoInicial;
+
+                function depositar(valor){
+                    saldo += valor;
+                }
+
+                function sacar(valor){
+                    if(saldo >= valor){
+                        saldo -= valor;
+                    } else{
+                        console.log("Saldo Insuficiente");
+                    }
+                }
+
+                this.getSaldo = function (){
+                    return saldo;
+                }
+
+                this.depositar = depositar;
+                this.sacar = sacar;
+            }
+        }
+
+
+        var conta = new ContaBancaria(1000);
+        document.getElementById("saldoInicial").textContent = "Saldo Inicial: R$" + (conta.getSaldo());
+        conta.depositar(500);
+        conta.sacar(200);
+        document.getElementById("saldoFinal").textContent = "Saldo Final: R$" + (conta.getSaldo());
+    </script>
+
+    <hr>
+
+    <h1>Orientação a Objeto - Agregação</h1>
+
+    <ul>
+        <h2 id="turma"></h2>
+        <h3 id="listaAluno"></h3>
+        <ul id="alunos"></ul>
+    </ul>
+
+    <script>
+        class Aluno {
+            constructor(nome, matricula){
+                this.nome = nome;
+                this.matricula = matricula;
+            }
+    
+            apresentar(){
+                return `Aluno: ${this.nome}, Matricula: ${this.matricula}`;
+            }
+        }
+    
+        class Turma {
+            constructor(nomeDaTurma){
+                this.nomeDaTurma = nomeDaTurma;
+                this.alunos = [];
+            }
+    
+            adicionarAluno(aluno){
+                this.alunos.push(aluno);
+            }
+    
+            listarAlunos(){
+                document.getElementById("turma").textContent = this.nomeDaTurma;
+                document.getElementById("listaAluno").textContent = "Lista de Alunos:";
+                const ulAlunos = document.getElementById("alunos");
+                ulAlunos.innerHTML = ""; 
+    
+                this.alunos.forEach(aluno => {
+                    const li = document.createElement("li");
+                    li.textContent = aluno.apresentar();
+                    ulAlunos.appendChild(li);
+                });
+            }
+        }
+    
+        const aluno1 = new Aluno('João', '12345');
+        const aluno2 = new Aluno('Maria', '54321');
+    
+        const turmaA = new Turma('Turma A');
+        turmaA.adicionarAluno(aluno1);
+        turmaA.adicionarAluno(aluno2);
+    
+        turmaA.listarAlunos();
+    </script>
+
+
+    <hr>
+
+    <h1>Orientação a Objeto - Herança</h1>
+
+    <ul>
+        <h2>Animal</h2>
+        <li id="animal"></li>
+        <li id="labrador"></li>
+    </ul>
+
+    <script>
+
+        function Animal(nome) {
+            this.nome = nome;
+        }
+        
+        Animal.prototype.fazerBarulho = function () {
+            document.getElementById("animal").textContent = `${this.nome} faz um barulho.`;
+        };
+        
+        function Cachorro(nome, raca) {
+            Animal.call(this, nome); 
+            this.raca = raca;
+        }
+        
+        Cachorro.prototype = Object.create(Animal.prototype);
+
+        Cachorro.prototype.latir = function () {
+            document.getElementById("labrador").textContent =(`${this.nome} (${this.raca}) late: Woof! Woof!`);
+        };
+
+        const meuCachorro = new Cachorro('Rex', 'Labrador');
+        meuCachorro.fazerBarulho(); 
+        meuCachorro.latir(); 
+  
+    </script>
+
+    <script src="index.js"></script>
+</body>
+</html>

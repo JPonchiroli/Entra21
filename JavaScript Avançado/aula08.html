@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula - 19/10</title>
+</head>
+
+<body style="font-family: sans-serif; background-color: #1f2029; color: #fff">
+    <h1>Exercicio 1 - Imprimindo Objeto</h1>
+    <ul>
+        <li id="objeto"></li>
+        <li id="numInformado"></li>
+        <li id="nomePessoa"></li>
+        <li id="pessoaIdosa"></li>
+    </ul>
+    <script>
+        let objeto = {
+            numeroInformado: 1,
+            nomePessoa: "José",
+            pessoaIdosa: true
+        };
+
+
+        document.getElementById("objeto").textContent = objeto;
+        document.getElementById("numInformado").textContent = objeto.numeroInformado;
+        document.getElementById("nomePessoa").textContent = objeto.nomePessoa;
+        document.getElementById("pessoaIdosa").textContent = objeto.pessoaIdosa; 
+    </script>
+
+    <hr>
+
+    <h1>Exercicio 2 - Criando Objeto Cachorro</h1>
+    <ul>
+        <li id="racaCachorro"></li>
+        <li id="nomeCachorro"></li>
+        <li id="pesoCachorro"></li>
+        <li id="donoCachorro"></li>
+    </ul>
+
+    <script>
+        let cachorro = {
+            racaCachorro: "Pinchester",
+            nomeCachorro: "Princesa",
+            pesoCachorro: "600g",
+            donoCachorro: "Marilu"
+        };
+
+
+        document.getElementById("racaCachorro").textContent = cachorro.racaCachorro;
+        document.getElementById("nomeCachorro").textContent = cachorro.nomeCachorro;
+        document.getElementById("pesoCachorro").textContent = cachorro.pesoCachorro;
+        document.getElementById("donoCachorro").textContent = cachorro.donoCachorro; 
+    </script>
+
+    <hr>
+
+    <h1>Exercicio 3 - Função com Objeto</h1>
+
+    <h3 id="nomeNinja"></h3>
+    <h3 id="shuriken"></h3>
+
+    <script>
+        function Ninja(nome) {
+            this.nome = nome;
+            this.atirarShuriken = function () {
+                document.getElementById("shuriken").textContent = `O ${this.nome} atirou a Shuriken`;
+            }
+        }
+
+        let naruto = new Ninja("Naruto");
+        document.getElementById("nomeNinja").textContent = naruto.nome;
+        naruto.atirarShuriken();
+
+    </script>
+
+    <hr>
+
+
+    <h1>Exercicio 3 - Função com Objeto Pt2.</h1>
+
+    <h3 id="nomeNinja2"></h3>
+    <h3 id="shuriken2"></h3>
+
+    <script>
+        function Ninja2(nome, qtdShuriken) {
+            this.nome = nome;
+            this.estoqueShuriken = qtdShuriken;
+            this.atirarShuriken = function () {
+                if (this.estoqueShuriken > 0) {
+                    document.getElementById("shuriken2").textContent = `O ${this.nome} atirou a Shuriken`;
+                    this.estoqueShuriken--;
+                } else {
+                    document.getElementById("shuriken2").textContent = `O de Shuriken está Esgotado`;
+                }
+            }
+        }
+
+        let naruto2 = new Ninja2("Naruto", 3);
+        document.getElementById("nomeNinja2").textContent = naruto.nome;
+        naruto2.atirarShuriken();
+        document.write("Saldo de Shuriken: " + naruto2.estoqueShuriken + "<br>");
+
+    </script>
+
+    <hr>
+
+    <h1>Exercicio 4 - Classe</h1>
+
+    <ul>
+        <li id="documento"></li>
+        <li id="nome"></li>
+        <li id="email"></li>
+    </ul>
+
+    <script>
+        class PessoaFisica {
+            constructor(documento, nome, email) {
+                this.documento = documento;
+                this.nome = nome;
+                this.email = email;
+            }
+
+            listarDados() {
+                document.getElementById("documento").textContent = `Documento: ${this.documento}`;
+                document.getElementById("nome").textContent = `Nome: ${this.nome}`;
+                document.getElementById("email").textContent = `Email: ${this.email}`;
+            }
+        }
+
+        const pessoa1 = new PessoaFisica('123456789', 'João Ponchiroli', 'joao@gmail.com');
+        pessoa1.listarDados();
+    </script>
+
+
+    <hr>
+
+    <h1>Exercicio 5 - Classe Lâmpada</h1>
+
+    <h3>Estoque Inical: 0</h3>
+
+    <h3 id="estoqueLampada"></h3>
+
+    <h3 id="statusLampada"></h3>
+
+    <h4>Histórico de Compras:</h4>
+
+    <script>
+        class Lampada{
+            constructor(qtdEstoque, statusLampada){
+                this.qtdEstoque = qtdEstoque;
+                this.statusLampada = statusLampada;
+            }
+
+
+            listarEstoque() {
+                document.getElementById("estoqueLampada").textContent = `Estoque Final: ${this.qtdEstoque}`;
+            }
+
+            comprarLampada(){
+                this.qtdEstoque++;
+            }
+
+            venderLampada(){
+                this.qtdEstoque--;
+            }
+
+            mudarStatusLampada(){
+                if(this.statusLampada == "Desligada"){
+                    this.statusLampada = "Ligada";
+                    document.getElementById("statusLampada").textContent = `Status Lâmpada: ${this.statusLampada}`;
+                } else if(this.statusLampada == "Ligada"){
+                    this.statusLampada = "Desligada";
+                    document.getElementById("statusLampada").textContent = `Status Lâmpada: ${this.statusLampada}`;
+                }
+            }
+        }
+
+        const lampada1 = new Lampada("0", "Desligada");
+        lampada1.comprarLampada();
+        document.write("+1 Compra <br>");
+        lampada1.comprarLampada();
+        document.write("+1 Compra <br>");
+        lampada1.venderLampada();
+        document.write("+1 Venda <br>");
+        lampada1.listarEstoque();
+        lampada1.mudarStatusLampada();
+
+    </script>
+
+    <h3 id="estoqueLampada"></h3>
+
+</body>
+
+</html>
