@@ -10,4 +10,6 @@ router.get('/Products', Controllers.ShowAllProducts)
 
 router.delete('/Products/:id', Controllers.DeleteProduct)
 
+router.put('/Products/:id', Controllers.UpdateProduct)
+
 module.exports = router;
