@@ -15,7 +15,16 @@ const Controllers = {
         } catch (error){
             res.status(500).send(error.message)
         }
-    }
+    },
+    ShowAllProducts: async (req, res) => {
+        try{
+            const products = await Product.findAll()
+            res.json(products)
+
+        } catch (error){
+            res.status(500).send(error.message)
+        }
+    },
 }
 
 module.exports = Controllers
