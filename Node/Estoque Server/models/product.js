@@ -11,6 +11,12 @@ Product.init({
     },
     product_name: {
         type: DataTypes.STRING
+    },
+    size: {
+        type: DataTypes.STRING
+    },
+    unitary_price: {
+        type: DataTypes.DECIMAL(10, 2)
     }
 }, {
     sequelize,
