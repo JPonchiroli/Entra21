@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize')
 const sequelize = require('../config/database')
  
-class stockEntry extends Model {}
+class StockEntry extends Model {}
 
-stockEntry.init({
+StockEntry.init({
     id_entry: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -28,4 +28,4 @@ stockEntry.init({
     timestamps: false
 });
 
-module.exports = stockEntry;
+module.exports = StockEntry;

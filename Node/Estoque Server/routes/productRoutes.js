@@ -1,17 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const Controllers = require('../controllers/productController')
+const ProductControllers = require('../controllers/productController')
 
-router.get('/', Controllers.HelloMessage)
+router.get('/HelloProducts', ProductControllers.HelloMessage) /*Debug Message*/ 
 
-router.post('/Products', Controllers.CreateProduct)
+router.post('/Products', ProductControllers.CreateProduct)
 
-router.get('/Products', Controllers.ShowAllProducts)
+router.get('/Products', ProductControllers.ShowAllProducts)
 
-router.get('/Products/:id', Controllers.ShowOneProduct)
+router.get('/Products/:id', ProductControllers.ShowOneProduct)
 
-router.delete('/Products/:id', Controllers.DeleteProduct)
+router.delete('/Products/:id', ProductControllers.DeleteProduct)
 
-router.put('/Products/:id', Controllers.UpdateProduct)
+router.put('/Products/:id', ProductControllers.UpdateProduct)
 
 module.exports = router;

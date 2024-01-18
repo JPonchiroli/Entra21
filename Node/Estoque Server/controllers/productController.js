@@ -1,9 +1,9 @@
 const Product = require('../models/product')
 
-const Controllers = {
+const ProductControllers = {
     HelloMessage: async (req, res) => {
         try {
-            res.json({ message: 'Hello World' })
+            res.json({ message: 'Hello Products' })
         } catch (error) {
             res.status(500).send(error.message)
         }
@@ -59,4 +59,4 @@ const Controllers = {
     }
 }
 
-module.exports = Controllers
+module.exports = ProductControllers
