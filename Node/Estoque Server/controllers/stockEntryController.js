@@ -7,6 +7,14 @@ const stockEntryControllers = {
         } catch (error) {
             res.status(500).send(error.message)
         }
+    },
+    CreateStockEntry: async (req, res) => {
+        try{
+            const newStockEntry = await StockEntry.create(req.body)
+            res.json(newStockEntry)
+        } catch (error) {
+            res.status(500).send(error.message)
+        }
     }
 }
 
