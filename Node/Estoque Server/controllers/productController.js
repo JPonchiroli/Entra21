@@ -20,7 +20,6 @@ const ProductControllers = {
         try {
             const products = await Product.findAll()
             res.json(products)
-
         } catch (error) {
             res.status(500).send(error.message)
         }
