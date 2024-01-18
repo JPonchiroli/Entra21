@@ -10,8 +10,31 @@ const stockEntryControllers = {
     },
     CreateStockEntry: async (req, res) => {
         try{
-            const newStockEntry = await StockEntry.create(req.body)
+            const { id_product, quantity, entry_date } = req.body
+
+            const entryDate = new Date(entry_date)
+
+            const newStockEntry = await StockEntry.create({
+                id_product, quantity, entry_date: entryDate
+            })
+
             res.json(newStockEntry)
+        } catch (error) {
+            res.status(500).send(error.message)
+        }
+    },
+    ShowAllEntries: async (req, res) => {
+        try{
+            const entries = await StockEntry.findAll()
+            res.json(entries)
+        } catch (error) {
+            res.status(500).send(error.message)
+        }
+    },
+    ShowOneEntry: async (req, res) => {
+        try{
+            const entry = await StockEntry.findByPk(req.params.id)
+            res.json(entry)
         } catch (error) {
             res.status(500).send(error.message)
         }
