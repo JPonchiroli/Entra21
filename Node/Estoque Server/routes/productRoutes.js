@@ -8,6 +8,8 @@ router.post('/Products', Controllers.CreateProduct)
 
 router.get('/Products', Controllers.ShowAllProducts)
 
+router.get('/Products/:id', Controllers.ShowOneProduct)
+
 router.delete('/Products/:id', Controllers.DeleteProduct)
 
 router.put('/Products/:id', Controllers.UpdateProduct)

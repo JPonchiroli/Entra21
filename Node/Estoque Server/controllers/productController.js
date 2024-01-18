@@ -25,6 +25,14 @@ const Controllers = {
             res.status(500).send(error.message)
         }
     },
+    ShowOneProduct: async (req, res) => {
+        try{
+            const product = await Product.findByPk(req.params.id)
+            res.json(product)
+        } catch (error) {
+            res.status(500).send(error.message)
+        }
+    },
     DeleteProduct: async (req, res) => {
         try {
             const product = await Product.findByPk(req.params.id)
