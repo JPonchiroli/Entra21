@@ -38,6 +38,18 @@ const stockEntryControllers = {
         } catch (error) {
             res.status(500).send(error.message)
         }
+    },
+    DeleteStockEntry: async (req, res) => {
+        try {
+            const entry = await StockEntry.findByPk(req.params.id)
+            if(!entry) {
+                res.status(404).send("Stock Entry Not Find")
+            }
+            await entry.destroy()
+            res.send("Entry Successfully Deleted")
+        } catch (error) {
+            res.status(500).send(error.message)
+        }
     }
 }
 
