@@ -31,6 +31,14 @@ const stockExitControllers = {
         } catch (error) {
             res.status(500).send(error.message)
         }
+    },
+    ShowAllExits: async (req, res) => {
+        try{
+            const exits = await StockExit.findAll()
+            res.json(exits)
+        } catch (error){
+            res.status(500).send(error.message)
+        }
     }
 }
 
