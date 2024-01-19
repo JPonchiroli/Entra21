@@ -260,6 +260,61 @@
 					},
 					"response": []
 				}
+			],
+			"description": "MySQL Create Table:\n\ncreate table stock_exits(  \nid_exit int auto_increment primary key,  \nid_product int,  \nquantity int,  \nexit_date date  \n);"
+		},
+		{
+			"name": "Stock Exit",
+			"item": [
+				{
+					"name": "Post a Stock Exit",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_product\": \"1\",\r\n    \"quantity\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/StockExit/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"StockExit",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Stock Exits",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/StockExit/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"StockExit",
+								""
+							]
+						}
+					},
+					"response": []
+				}
 			]
 		}
 	]
