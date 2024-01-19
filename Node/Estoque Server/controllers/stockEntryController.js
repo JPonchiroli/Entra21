@@ -50,6 +50,18 @@ const stockEntryControllers = {
         } catch (error) {
             res.status(500).send(error.message)
         }
+    },
+    UpdateStockEntry: async (req, res) => {
+        try {
+            const entry = await StockEntry.findByPk(req.params.id)
+            if(!entry){
+                res.status(404).send("Stock Entry Not Find")
+            }
+            await entry.update(req.body)
+            res.send("Stock Entry Successfully Updated")
+        } catch (error) {
+            res.send(500).send(error.message)
+        }
     }
 }
 

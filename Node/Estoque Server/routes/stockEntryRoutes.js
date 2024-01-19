@@ -12,4 +12,6 @@ router.post('/StockEntry', stockEntry.CreateStockEntry)
 
 router.delete('/StockEntry/:id', stockEntry.DeleteStockEntry)
 
+router.put('/StockEntry/:id', stockEntry.UpdateStockEntry)
+
 module.exports = router
