@@ -5,48 +5,52 @@ const StockEntry = require('../models/stockEntry')
 const stockExitControllers = {
     HelloMessage: async (req, res) => {
         try {
-            res.json({ message: 'Hello Stock Exits'})
+            res.json({ message: 'Hello Stock Exits' })
         } catch (error) {
             res.status(500).send(error.message)
         }
     },
     CreateStockExit: async (req, res) => {
         try {
-            const { id_product, quantity} = req.body
-            const product = await Product.findByPk(id_product)
+            const exitDataArray = req.body
 
-            if(!product) {
-                return res.status(404).send("Product Not Find")
+            for (const exitData of exitDataArray) {
+                const product = await Product.findByPk(exitData.id_product);
+
+                if (!product) {
+                    return res.status(404).send(`Product with id ${exitData.id_product} not found`);
+                }
+
+                const totalEntries = await StockEntry.sum('quantity', { where: { id_product: product.id_product } });
+                const totalExits = await StockExit.sum('quantity', { where: { id_product: product.id_product } });
+                const currentInventory = totalEntries - totalExits;
+
+                if (exitData.quantity > currentInventory) {
+                    return res.status(400).send(`Insufficient stock for product with id ${exitData.id_product}`);
+                }
+
+                await StockExit.create(exitData);
             }
-
-            const totalEntries = await StockEntry.sum('quantity', { where: { id_product } })
-            const totalExits = await StockExit.sum('quantity', { where: { id_product }})
-            const currentInventory = totalEntries - totalExits
-
-            if(quantity > currentInventory){
-                return res.status(400).send("The Stock is Insufficient")
-            }
-            await StockExit.create({ id_product, quantity, exit_date: new Date() })
             res.send("The Stock Exit Registered Successfully")
         } catch (error) {
             res.status(500).send(error.message)
         }
     },
     ShowAllExits: async (req, res) => {
-        try{
+        try {
             const exits = await StockExit.findAll()
-            if(exits.length === 0) {
+            if (exits.length === 0) {
                 res.json("No Stock Exits Registered")
             }
             res.json(exits)
-        } catch (error){
+        } catch (error) {
             res.status(500).send(error.message)
         }
     },
     ShowOneExit: async (req, res) => {
-        try {  
+        try {
             const exit = await StockExit.findByPk(req.params.id)
-            if(!exit) {
+            if (!exit) {
                 res.json("No Stock Exit Registered")
             }
             res.json(exit)
@@ -55,10 +59,10 @@ const stockExitControllers = {
         }
     },
     UpdateStockExit: async (req, res) => {
-        try{
+        try {
             const exit = await StockExit.findByPk(req.params.id)
-            if(!exit) {
-                    res.status(404).send("Stock Exit Not Found")
+            if (!exit) {
+                res.status(404).send("Stock Exit Not Found")
             }
             await exit.update(req.body)
             res.send("Stock Exit Updated Successfully")
@@ -66,10 +70,10 @@ const stockExitControllers = {
             res.status(500).send(error.message)
         }
     },
-    DeleteStockExit: async (req,res) => {
+    DeleteStockExit: async (req, res) => {
         try {
             const exit = await StockExit.findByPk(req.params.id)
-            if(!exit){
+            if (!exit) {
                 res.send("Stock Exit Not Found")
             }
             await exit.destroy()
