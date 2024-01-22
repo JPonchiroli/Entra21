@@ -6,6 +6,8 @@ router.get('/HelloStockExit', stockExit.HelloMessage) /*Debug Message */
 
 router.get('/StockExit', stockExit.ShowAllExits)
 
+router.get('/StockExit/:id', stockExit.ShowOneExit)
+
 router.post('/StockExit', stockExit.CreateStockExit)
 
 module.exports = router
