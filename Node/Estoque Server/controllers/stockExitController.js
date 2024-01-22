@@ -35,6 +35,9 @@ const stockExitControllers = {
     ShowAllExits: async (req, res) => {
         try{
             const exits = await StockExit.findAll()
+            if(exits.length === 0) {
+                res.json("No Stock Exits Registered")
+            }
             res.json(exits)
         } catch (error){
             res.status(500).send(error.message)
@@ -43,6 +46,9 @@ const stockExitControllers = {
     ShowOneExit: async (req, res) => {
         try {  
             const exit = await StockExit.findByPk(req.params.id)
+            if(!exit) {
+                res.json("No Stock Exit Registered")
+            }
             res.json(exit)
         } catch (error) {
             res.status(500).send(error.message)

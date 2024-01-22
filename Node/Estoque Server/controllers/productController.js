@@ -19,6 +19,9 @@ const ProductControllers = {
     ShowAllProducts: async (req, res) => {
         try {
             const products = await Product.findAll()
+            if(products.length === 0) {
+                res.json("No Products Registered")
+            }
             res.json(products)
         } catch (error) {
             res.status(500).send(error.message)
@@ -27,6 +30,9 @@ const ProductControllers = {
     ShowOneProduct: async (req, res) => {
         try{
             const product = await Product.findByPk(req.params.id)
+            if(!product) {
+                res.json("No Product Registered")
+            }
             res.json(product)
         } catch (error) {
             res.status(500).send(error.message)

@@ -26,6 +26,9 @@ const stockEntryControllers = {
     ShowAllEntries: async (req, res) => {
         try{
             const entries = await StockEntry.findAll()
+            if(entries === 0) {
+                res.json("No Stock Entries Registered")
+            }
             res.json(entries)
         } catch (error) {
             res.status(500).send(error.message)
@@ -34,6 +37,9 @@ const stockEntryControllers = {
     ShowOneEntry: async (req, res) => {
         try{
             const entry = await StockEntry.findByPk(req.params.id)
+            if(!entry) {
+                res.json("No Stock Entry Registered")
+            }
             res.json(entry)
         } catch (error) {
             res.status(500).send(error.message)
