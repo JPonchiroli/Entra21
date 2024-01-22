@@ -55,7 +55,19 @@ const stockExitControllers = {
                     res.status(404).send("Stock Exit Not Found")
             }
             await exit.update(req.body)
-            res.send("Stock EXit Updated Successfully")
+            res.send("Stock Exit Updated Successfully")
+        } catch (error) {
+            res.status(500).send(error.message)
+        }
+    },
+    DeleteStockExit: async (req,res) => {
+        try {
+            const exit = await StockExit.findByPk(req.params.id)
+            if(!exit){
+                res.send("Stock Exit Not Found")
+            }
+            await exit.destroy()
+            res.send("Stock Exit Deleted Successfully")
         } catch (error) {
             res.status(500).send(error.message)
         }
