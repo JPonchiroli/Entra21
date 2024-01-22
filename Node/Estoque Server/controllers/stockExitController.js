@@ -47,6 +47,18 @@ const stockExitControllers = {
         } catch (error) {
             res.status(500).send(error.message)
         }
+    },
+    UpdateStockExit: async (req, res) => {
+        try{
+            const exit = await StockExit.findByPk(req.params.id)
+            if(!exit) {
+                    res.status(404).send("Stock Exit Not Found")
+            }
+            await exit.update(req.body)
+            res.send("Stock EXit Updated Successfully")
+        } catch (error) {
+            res.status(500).send(error.message)
+        }
     }
 }
 

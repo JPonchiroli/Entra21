@@ -10,4 +10,6 @@ router.get('/StockExit/:id', stockExit.ShowOneExit)
 
 router.post('/StockExit', stockExit.CreateStockExit)
 
+router.put('/StockExit/:id', stockExit.UpdateStockExit)
+
 module.exports = router
