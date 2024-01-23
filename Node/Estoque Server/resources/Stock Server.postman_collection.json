@@ -30,7 +30,7 @@
 					"response": []
 				},
 				{
-					"name": "Get All PRoducts",
+					"name": "Get All Products",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -83,7 +83,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n    {\r\n    \"product_name\": \"\", \r\n    \"size\": \"\", \r\n    \"unitary_price\": \"\"\r\n    }   \r\n]",
+							"raw": "[\r\n    {\r\n    \"product_name\": \"String\", \r\n    \"size\": \"Integer\", \r\n    \"unitary_price\": \"Integer\"\r\n    }   \r\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -253,7 +253,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n    {\"id_product\": 20, \"quantity\": 10, \"entry_date\": \"2023-11-01\"}\r\n]",
+							"raw": "[\r\n    {\"id_product\": \"Integer\", \"quantity\": \"Integer\", \"entry_date\": \"Date\"}\r\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -370,13 +370,42 @@
 					"response": []
 				},
 				{
+					"name": "Post All Stock Exits",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\"id_product\":1,\"quantity\":5,\"exit_date\":\"2023-11-01\"},\r\n    {\"id_product\":2,\"quantity\":8,\"exit_date\":\"2023-11-02\"},\r\n    {\"id_product\":3,\"quantity\":6,\"exit_date\":\"2023-11-03\"},\r\n    {\"id_product\":4,\"quantity\":8,\"exit_date\":\"2023-11-04\"},\r\n    {\"id_product\":5,\"quantity\":6,\"exit_date\":\"2023-11-05\"},\r\n    {\"id_product\":6,\"quantity\":9,\"exit_date\":\"2023-11-06\"},\r\n    {\"id_product\":7,\"quantity\":7,\"exit_date\":\"2023-11-07\"},\r\n    {\"id_product\":8,\"quantity\":9,\"exit_date\":\"2023-11-08\"},\r\n    {\"id_product\":9,\"quantity\":7,\"exit_date\":\"2023-11-09\"},\r\n    {\"id_product\":10,\"quantity\":10,\"exit_date\":\"2023-11-10\"}\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/StockExit/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"StockExit",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Post a Stock Exit",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n    {\"id_product\":19,\"quantity\":5,\"exit_date\":\"2023-11-01\"},\r\n    {\"id_product\":20,\"quantity\":5,\"exit_date\":\"2023-11-01\"}\r\n]",
+							"raw": "[\r\n    {\"id_product\":\"Integer\",\"quantity\":\"Integer\",\"exit_date\":\"Date\"}\r\n]",
 							"options": {
 								"raw": {
 									"language": "json"
