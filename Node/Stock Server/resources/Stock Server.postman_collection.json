@@ -15,7 +15,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/products/1",
+							"raw": "http://localhost:3000/products/21",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -23,7 +23,7 @@
 							"port": "3000",
 							"path": [
 								"products",
-								"1"
+								"21"
 							]
 						}
 					},
@@ -83,7 +83,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n    {\r\n    \"product_name\": \"String\", \r\n    \"size\": \"Integer\", \r\n    \"unitary_price\": \"Integer\"\r\n    }   \r\n]",
+							"raw": "[\r\n    {\r\n    \"product_name\": \"Teste Samuel\", \r\n    \"size\": 99, \r\n    \"unitary_price\": 0.99\r\n    }   \r\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -110,7 +110,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/products/19",
+							"raw": "http://localhost:3000/products/21",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -118,7 +118,7 @@
 							"port": "3000",
 							"path": [
 								"products",
-								"19"
+								"21"
 							]
 						}
 					},
@@ -131,7 +131,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"product_name\": \"Meia Cano Longo\"\r\n}",
+							"raw": "{\r\n    \"product_name\": \"Teste Samuel\",\r\n    \"size\": 35\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -139,7 +139,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/products/1",
+							"raw": "http://localhost:3000/products/20",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -147,7 +147,7 @@
 							"port": "3000",
 							"path": [
 								"products",
-								"1"
+								"20"
 							]
 						}
 					},
@@ -165,7 +165,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/StockEntry/1",
+							"raw": "http://localhost:3000/StockEntry/21",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -173,7 +173,7 @@
 							"port": "3000",
 							"path": [
 								"StockEntry",
-								"1"
+								"21"
 							]
 						}
 					},
@@ -253,7 +253,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n    {\"id_product\": \"Integer\", \"quantity\": \"Integer\", \"entry_date\": \"Date\"}\r\n]",
+							"raw": "[\r\n    {\"id_product\": 20,\r\n    \"quantity\": 99,\r\n    \"entry_date\": \"2024-01-25\"}\r\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -280,7 +280,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/StockEntry/31",
+							"raw": "http://localhost:3000/StockEntry/21",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -288,7 +288,7 @@
 							"port": "3000",
 							"path": [
 								"StockEntry",
-								"31"
+								"21"
 							]
 						}
 					},
@@ -301,7 +301,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"quantity\": \"11\"\r\n}",
+							"raw": "{\r\n    \"quantity\": \"111\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -309,7 +309,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/StockEntry/9",
+							"raw": "http://localhost:3000/StockEntry/21",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -317,7 +317,7 @@
 							"port": "3000",
 							"path": [
 								"StockEntry",
-								"9"
+								"21"
 							]
 						}
 					},
@@ -335,7 +335,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/StockExit/1",
+							"raw": "http://localhost:3000/StockExit/21",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -343,7 +343,7 @@
 							"port": "3000",
 							"path": [
 								"StockExit",
-								"1"
+								"21"
 							]
 						}
 					},
@@ -405,7 +405,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n    {\"id_product\":\"Integer\",\"quantity\":\"Integer\",\"exit_date\":\"Date\"}\r\n]",
+							"raw": "[\r\n    {\"id_product\":5,\"quantity\":5,\"exit_date\":\"2024-01-05\"}\r\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -433,7 +433,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/StockExit/1",
+							"raw": "http://localhost:3000/StockExit/21",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -441,7 +441,7 @@
 							"port": "3000",
 							"path": [
 								"StockExit",
-								"1"
+								"21"
 							]
 						}
 					},
@@ -462,7 +462,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/StockExit/1",
+							"raw": "http://localhost:3000/StockExit/21",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -470,7 +470,7 @@
 							"port": "3000",
 							"path": [
 								"StockExit",
-								"1"
+								"21"
 							]
 						}
 					},
